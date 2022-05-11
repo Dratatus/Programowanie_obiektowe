@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32228.343
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "app", "lab_01\app.csproj", "{99BE7C83-5B5C-49AC-B8CC-ED87F560B370}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Programowanie Obiektowe", "Programowanie Obiektowe", "{7C835805-8E0D-4007-A695-B59DD0028FB8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "lab_01", "lab_01", "{52153D8C-138F-468E-B2F0-F7AB4C48A46F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{99BE7C83-5B5C-49AC-B8CC-ED87F560B370}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99BE7C83-5B5C-49AC-B8CC-ED87F560B370}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99BE7C83-5B5C-49AC-B8CC-ED87F560B370}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99BE7C83-5B5C-49AC-B8CC-ED87F560B370}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{99BE7C83-5B5C-49AC-B8CC-ED87F560B370} = {52153D8C-138F-468E-B2F0-F7AB4C48A46F}
+		{52153D8C-138F-468E-B2F0-F7AB4C48A46F} = {7C835805-8E0D-4007-A695-B59DD0028FB8}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {20B1ED60-3525-4A21-98CF-1FBE9A344932}
+	EndGlobalSection
+EndGlobal
