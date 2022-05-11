@@ -44,7 +44,7 @@ namespace prog_obj_02
             return new Ulamek(licz.)
         }
 
-
+     
     }
 
 
