@@ -14,6 +14,7 @@ namespace lab_02_zadanie
             Buyer buyer2 = new Buyer("Jaś Fasola 2", 21);
             Buyer buyer3 = new Buyer("Jaś Fasola 3", 23);
 
+
             buyer1.AddProduct(new Fruit("Apple", 6));
             buyer1.AddProduct(new Meat("Fish", 0.5));
 
