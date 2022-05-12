@@ -13,12 +13,12 @@ namespace lab_03
                 new SocketLogger("google.com", 80)
             };
 
-            using (ILogger logger = new CommonLogger(loggers))
-            {
-                logger.Log("Example message 1 ...");
-                logger.Log("Example message 2 ...");
-                logger.Log("Example message 3 ...", "value 1", "value 2", "value 3");
-            }
+            //using (ILogger logger = new CommonLogger(loggers))
+            //{
+            //    logger.Log("Example message 1 ...");
+            //    logger.Log("Example message 2 ...");
+            //    logger.Log("Example message 3 ...", "value 1", "value 2", "value 3");
+            //}
         }
     }
 }
