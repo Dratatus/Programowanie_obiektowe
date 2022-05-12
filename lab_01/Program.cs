@@ -1,65 +1,158 @@
 ﻿using System;
 
-namespace ConsoleApp1
+namespace Lab_1
 {
-    public class Program
+    class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-            Ulamek ulamek1 = new Ulamek(6, 10);
-            Ulamek ulamek2 = new Ulamek(5, 25);
-            Console.WriteLine(ulamek1);
-            Console.WriteLine(ulamek2);
+            Ulamek a = new(1, 2);
+            Ulamek b = new(5, 4);
+            Ulamek c = new(4, 10);
+            Ulamek d = new(a);
+            Ulamek e = new(2, 4);
 
-            Ulamek dodawanie = ulamek1 + ulamek2;
-            Console.WriteLine(dodawanie);
+            Console.WriteLine($"TEST 2: a= {a}");
+            Console.WriteLine($"TEST 3: {a} + {b} = {a + b}");
+
+            Ulamek[] tab = { a, b, c, d, e };
+
+            Console.WriteLine("Nie posortowane: ");
+            for (int i = 0; i < tab.Length; i++)
+                Console.WriteLine($"Ułamek: {tab[i].licznik}/{tab[i].mianownik}");
+
+            Array.Sort(tab);
+
+            Console.WriteLine();
+            Console.WriteLine("Posortowane rosnąco: ");
+            for (int i = 0; i < tab.Length; i++)
+            {
+                Console.WriteLine($"Ułamek: {tab[i].licznik}/{tab[i].mianownik}");
+            }
+            Console.WriteLine();
+            Console.WriteLine($"czy {a} takie samo jak {c}?" + (a == c));
+            Console.WriteLine($"czy  {a} jest takie samo jak  {e}?" + a.Equals(e));
+            Console.WriteLine();
+
+            Console.WriteLine(Ulamek.Dziesietny(a));
+
+            Console.WriteLine(a + " " + Ulamek.ZaokronglonyWGore(a) + " " + b + " " + Ulamek.ZaokronglonyWGore(b) + " " + c + " " + Ulamek.ZaokronglonyWGore(c));
+        }
+    }
+    public class Ulamek : IEquatable<Ulamek>, IComparable<Ulamek>  /// utworzenie ułamka i jego właściwości
+    {
+        public int licznik { get; private set; }
+        public int mianownik { get; private set; }
 
 
+       
+
+        public Ulamek() => (this.licznik, this.mianownik) = (1, 1); /// Tworzy obiekt Ułamek na podstawie wprowadzonych danych
+
+
+        
+
+        public Ulamek(int licznik, int mianownik) /// Tworzy kopie wybranego obiektu Ułamek.
+        {
+            this.licznik = licznik;
+            this.mianownik = mianownik;
         }
 
 
-        class Ulamek
+ 
+        /// <param name="ToCopy"> Obiekt którego kopie chcemy uzyskać</param>
+        public Ulamek(Ulamek ToCopy)
+            => (this.licznik, this.mianownik) = (ToCopy.licznik, ToCopy.mianownik);
+
+        /// Funkcja definuje w jaki sposób obiekt ma być drukowany w konsoli.
+        public override string ToString()
         {
+            return $"{licznik}/{mianownik}";
+        }
 
+        /// Funkcja sprawdzająca czy obiekty mają taką samą wartość
 
-            private int licznik, mianownik;
+        /// <param name="other"> Obiekt do którego porównujemy 
+        public virtual bool Equals(Ulamek other)
+        {
+            if (other == null) return false;
+            if (other == this) return true;
+            return Object.Equals(this.licznik, other.licznik) && Object.Equals(this.mianownik, other.mianownik);
+        }
 
+        /// Funkcja pórwnująca wartości obiektów
 
-
-
-            public Ulamek()
+        /// <param name="other"> Obiekt do którego porównujemy </param>
+        /// jesli obiekt jest miejszy to = -1, równy = 1 , większy = 1
+        public int CompareTo(Ulamek other)
+        {
+            int x = (this.licznik / other.mianownik) - (other.licznik / this.mianownik);
+            if (other == null || x < 0)
             {
-
+                return -1;
             }
-
-            //konstruktor dwuargumentowy przypisujący do lczik1 i mianownik2 wartości z licznika i mianownika
-            public Ulamek(int licznik1, int mianownik2)
+            if (x > 0) 
             {
-                licznik = licznik1;
-                mianownik = mianownik2;
+                return 1; 
             }
+            return 0;
+        }
 
 
-            //konstruktor kopiujący licznik i mianownik
-            public Ulamek(Ulamek kopia)
-            {
-                this.mianownik = kopia.mianownik;
-                this.licznik = kopia.licznik;
-            }
+        /// Przeciążanie operatorów i definicja operacji na ułamkach 
+        /// 
+        public static Ulamek operator +(Ulamek a, Ulamek b)
+        {
+            return new Ulamek(a.licznik * b.mianownik + b.licznik * a.mianownik, a.mianownik * b.mianownik);
+        }
+        public static Ulamek operator -(Ulamek a, Ulamek b)
+        {
+            return new Ulamek(a.licznik * b.mianownik - b.licznik * a.mianownik, a.mianownik * b.mianownik);
+        }
+        public static Ulamek operator *(Ulamek a, Ulamek b)
+        {
+            return new Ulamek(b.licznik / a.mianownik, b.mianownik * a.licznik);
+        }
+        public static Ulamek operator /(Ulamek a, Ulamek b)
+        {
+            return new Ulamek(b.mianownik / a.mianownik, b.licznik / a.licznik);
+        }
+        public static bool operator <(Ulamek a, Ulamek b)
+        {
+            return a.licznik * b.mianownik < a.mianownik * b.licznik;
+        }
+        public static bool operator >(Ulamek a, Ulamek b)
+        {
+            return a.licznik * b.mianownik > a.mianownik * b.licznik;
+        }
+        public static bool operator <=(Ulamek a, Ulamek b)
+        {
+            return a.licznik * b.mianownik <= a.mianownik * b.licznik;
+        }
+        public static bool operator >=(Ulamek a, Ulamek b)
+        {
+            return a.licznik * b.mianownik >= a.mianownik * b.licznik;
+        }
 
 
-            //przeciążenie operatora +
-            public static Ulamek operator +(Ulamek licz, Ulamek mian)
-            {
-                return new Ulamek(licz.licznik + mian.licznik, licz.mianownik + mian.mianownik);
-            }
-            //przeciążenie motedy TOString
-            public override string ToString()
-            {
+        /// Konwersja ułamka zwykłego na dziesiętny
 
-                return "Ten Ulamek to: " + licznik + " " + mianownik;
-            }
+        /// x => Ułamek zwykły
+        public static decimal Dziesietny(Ulamek x)
+        {
+            decimal a = x.licznik;
+            decimal b = x.mianownik;
+            return a / b;
+        }
 
+        /// Zaokrąglanie ułamka
+        ///
+        /// x => ułamek zwykły
+        public static decimal ZaokronglonyWGore(Ulamek x)
+        {
+            decimal a = x.licznik;
+            decimal b = x.mianownik;
+            return Math.Round(a / b, MidpointRounding.ToPositiveInfinity);
         }
     }
 }
