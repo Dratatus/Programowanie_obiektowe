@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Data.Linq;
 using System.Linq;
 
-namespace lab_07
+namespace lab_07.Classes
 {
-    public class DatabaseOperations : IDatabaseOperations
+    // Implementacja interfejsu korzystająca z bazy danych
+    public class MSSqlDataAccess : IDataAccess
     {
         private string _connectionString = @"Data Source=localhost;Initial Catalog=TestDatabase;Integrated Security=True";
 
@@ -44,9 +44,9 @@ namespace lab_07
                 Table<UserEntity> users = dataContext.GetTable<UserEntity>();
 
                 UserEntity foundUserEntity = GetUser(users, id);
-                
-                //foundUserEntity.Name = userEntity.Name;
-                //foundUserEntity.Role = userEntity.Role;
+
+                foundUserEntity.Name = userEntity.Name;
+                foundUserEntity.Role = userEntity.Role;
 
                 dataContext.SubmitChanges();
             }
@@ -74,7 +74,7 @@ namespace lab_07
                                            select user;
 
             UserEntity userEntity = query.FirstOrDefault();
-
+            
             return userEntity;
         }
     }

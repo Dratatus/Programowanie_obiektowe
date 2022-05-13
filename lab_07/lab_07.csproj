@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5F0FB06E-069C-47B6-BC9D-D1B3381CE450}</ProjectGuid>
+    <ProjectGuid>{023705BB-BE18-42BE-A74E-088DFA38B54D}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>lab_07</RootNamespace>
     <AssemblyName>lab_07</AssemblyName>
@@ -44,11 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DatabaseOperations.cs" />
-    <Compile Include="IDatabaseOperations.cs" />
+    <Compile Include="Classes\MSSqlDataAccess.cs" />
+    <Compile Include="Classes\IDataAccess.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserEntity.cs" />
+    <Compile Include="Classes\UserEntity.cs" />
+    <Compile Include="Classes\XmlDataAccess.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

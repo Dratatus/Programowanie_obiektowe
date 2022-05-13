@@ -1,8 +1,9 @@
 ﻿using System.Collections.Generic;
 
-namespace lab_07
+namespace lab_07.Classes
 {
-    public interface IDatabaseOperations
+    // Interfejs, czyli obowiązkowa część klas (klasy implementujące ten intefejs muszą zawierać te rzeczy)
+    public interface IDataAccess
     {
         List<UserEntity> GetAll();
 
