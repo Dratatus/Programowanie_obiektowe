@@ -20,7 +20,7 @@ namespace Lab_1
             Console.WriteLine("Nie posortowane: ");
             for (int i = 0; i < tab.Length; i++)
                 Console.WriteLine($"Ułamek: {tab[i].licznik}/{tab[i].mianownik}");
-
+            
             Array.Sort(tab);
 
             Console.WriteLine();
